@@ -6,7 +6,7 @@
 2. For navigation between screen use `Get.to(SomeView())`
 3. Simple usecase of GetX look after `login` folder:
 - `login_controller` -> put all logic here (use .obs to make value listenable for change)
-- 'login_view' -> view with `Obx` widget to listen change from controller
+- `login_view` -> view with `Obx` widget to listen change from controller
 
 # Styling
 
