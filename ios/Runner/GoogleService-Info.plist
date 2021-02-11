@@ -3,34 +3,32 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>982134953717-dv6uuurpk3ef1hd9ppu97no4o0tdk736.apps.googleusercontent.com</string>
+	<string>232900768378-alu77adsqshpdjdf4pc1hjhmtovm1moo.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.982134953717-dv6uuurpk3ef1hd9ppu97no4o0tdk736</string>
+	<string>com.googleusercontent.apps.232900768378-alu77adsqshpdjdf4pc1hjhmtovm1moo</string>
 	<key>API_KEY</key>
-	<string>AIzaSyBF6M0RONGGemSI0yoglXFTfA701cTzVi0</string>
+	<string>AIzaSyDPS9a3KwQg4Z3nUuaqOTpIA_L1TZ6Qo60</string>
 	<key>GCM_SENDER_ID</key>
-	<string>982134953717</string>
+	<string>232900768378</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.bottomnavbartemplate.flutter</string>
+	<string>balelabs.flutter.core</string>
 	<key>PROJECT_ID</key>
-	<string>flutter-template-eb599</string>
+	<string>balelabs-flutter-core</string>
 	<key>STORAGE_BUCKET</key>
-	<string>flutter-template-eb599.appspot.com</string>
+	<string>balelabs-flutter-core.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
+	<false/>
 	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_GCM_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
+	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:982134953717:ios:3f87ba31a01ca612e597bc</string>
-	<key>DATABASE_URL</key>
-	<string>https://flutter-template-eb599.firebaseio.com</string>
+	<string>1:232900768378:ios:c89a6e93931a5e1588c1c3</string>
 </dict>
 </plist>
