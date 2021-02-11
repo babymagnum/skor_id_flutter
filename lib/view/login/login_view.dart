@@ -31,20 +31,19 @@ class _LoginViewState extends State<LoginView> {
               child: SingleChildScrollView(
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 24.w),
-                  child: Obx(() => Column(
-                      children: [
-                        SizedBox(height: 40.h,),
-                        ButtonLoading(
-                          backgroundColor: ThemeColor.primary,
-                          disable: false,
-                          title: 'Sign In',
-                          loading: false,
-                          onTap: () => _loginCt.login(),
-                          verticalPadding: 14.h,
-                          textStyle: ThemeTextStyle.biryaniBold.apply(color: Colors.white, fontSizeDelta: 14.ssp),
-                        )
-                      ],
-                    ),
+                  child: Column(
+                    children: [
+                      SizedBox(height: 40.h,),
+                      ButtonLoading(
+                        backgroundColor: ThemeColor.primary,
+                        disable: false,
+                        title: 'Sign In',
+                        loading: false,
+                        onTap: () => _loginCt.login(),
+                        verticalPadding: 14.h,
+                        textStyle: ThemeTextStyle.biryaniBold.apply(color: Colors.white, fontSizeDelta: 14.ssp),
+                      )
+                    ],
                   ),
                 ),
               ),

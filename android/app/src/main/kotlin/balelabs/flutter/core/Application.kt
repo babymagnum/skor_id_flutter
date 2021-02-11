@@ -1,4 +1,4 @@
-package com.abbifam.satupos
+package balelabs.flutter.core
 
 import io.flutter.app.FlutterApplication
 import io.flutter.plugin.common.PluginRegistry

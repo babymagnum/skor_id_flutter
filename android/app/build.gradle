@@ -28,7 +28,7 @@ android {
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.dummy.dummy"
+        applicationId "balelabs.flutter.core"
         minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
@@ -40,22 +40,22 @@ android {
         release {
             keyAlias ''
             keyPassword ''
-            storeFile file('')
+            storeFile file('ads')
             storePassword ''
         }
     }
 
     buildTypes {
         release {
-            resValue "string", "app_name", "SIMKP PLN"
+            resValue "string", "app_name", "Balelabs Core"
             signingConfig signingConfigs.release
             minifyEnabled true
             debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         debug {
-            applicationIdSuffix = '.debug'
-            resValue "string", "app_name", "SIMKP PLN Dev"
+//            applicationIdSuffix = '.debug'
+            resValue "string", "app_name", "Balelabs Core Dev"
         }
     }
 }
