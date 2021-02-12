@@ -10,7 +10,17 @@ class CommonController extends GetxController {
   var language = Constant.INDONESIAN.obs;
   SharedPreferences preferences;
 
-  setNotConnected(value) => notConnected.value = value;
+  Future<bool> checkConnection() async{
+    var _check = await GetConnect().get('http://google.com');
+    print('Check Connection, status code = ${_check.statusCode}');
+    if(_check.statusCode == 200) {
+      notConnected.value = false;
+      return true;
+    }else{
+      notConnected.value = true;
+      return false;
+    }
+  }
 
   setLanguage(BuildContext context, String value) async {
     final preference = await SharedPreferences.getInstance();

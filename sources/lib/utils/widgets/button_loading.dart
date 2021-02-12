@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class ButtonLoading extends StatelessWidget {
 
   ButtonLoading({Key key, @required this.backgroundColor, @required this.disable,
-    @required this.title, @required this.loading, @required this.onTap, @required this.textStyle,
+    @required this.title, @required this.loading, @required this.onTap, this.textStyle,
     this.verticalPadding = 5, this.horizontalPadding = 10, this.loadingSize = 17,
     this.borderRadius = 6}): super(key: key);
 
@@ -22,6 +22,7 @@ class ButtonLoading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextStyle _textStyle = textStyle ?? TextStyle();
     return Parent(
       gesture: Gestures()..onTap(disable ? null : onTap),
       style: ParentStyle()..background.color(disable ? Color(0xFFC4C4C4) : backgroundColor)..borderRadius(all: borderRadius)..ripple(true)
@@ -34,7 +35,7 @@ class ButtonLoading extends StatelessWidget {
               opacity: 0,
               child: Padding(
                 padding: EdgeInsets.only(top: 3.h),
-                child: Text(title, style: textStyle,),
+                child: Text(title, style: _textStyle),
               ),
             ),
             Positioned(
@@ -55,7 +56,7 @@ class ButtonLoading extends StatelessWidget {
         ) :
         Padding(
           padding: EdgeInsets.only(top: 3.h),
-          child: Text(title, style: textStyle,),
+          child: Text(title, style: _textStyle),
         ),
       ),
     );

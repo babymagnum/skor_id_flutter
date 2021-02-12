@@ -37,13 +37,7 @@ class _MyAppState extends State<MyApp> {
   StreamSubscription _connection, _fcmRefreshToken;
 
   _connectivityResult(ConnectivityResult result) {
-    if (result == ConnectivityResult.mobile) {
-      commonController.setNotConnected(false);
-    } else if (result == ConnectivityResult.wifi) {
-      commonController.setNotConnected(false);
-    } else {
-      commonController.setNotConnected(true);
-    }
+    commonController.checkConnection();
   }
 
   _navigateTo(String redirect) {
