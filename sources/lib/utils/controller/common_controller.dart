@@ -10,15 +10,13 @@ class CommonController extends GetxController {
   var language = Constant.INDONESIAN.obs;
   SharedPreferences preferences;
 
-  Future<bool> checkConnection() async{
-    var _check = await GetConnect().get('http://google.com');
+  checkConnection() async{
+    var _check = await GetConnect().get('https://google.com');
     print('Check Connection, status code = ${_check.statusCode}');
     if(_check.statusCode == 200) {
       notConnected.value = false;
-      return true;
     }else{
       notConnected.value = true;
-      return false;
     }
   }
 

@@ -9,6 +9,7 @@ import 'package:pln_flutter/utils/theme/theme_color.dart';
 import 'package:pln_flutter/utils/theme/theme_text_style.dart';
 import 'package:pln_flutter/utils/widgets/button_loading.dart';
 import 'package:pln_flutter/view/base_view.dart';
+import 'package:pln_flutter/view/forgot_password/forgot_password_view.dart';
 import 'package:pln_flutter/view/login/login_controller.dart';
 
 class LoginView extends StatelessWidget {
@@ -109,8 +110,16 @@ class LoginView extends StatelessWidget {
                                       ),
                                     )
                                   ),
+                                  GestureDetector(
+                                    onTap: () => Get.to(ForgotPasswordView()),
+                                    child: Container(
+                                      alignment: Alignment.centerRight,
+                                      padding: EdgeInsets.only(top: 16),
+                                      child: Text('Forget Password ?'.tr, style: ThemeTextStyle.biryaniBold.apply(fontSizeDelta: 14, color: Colors.orange)),
+                                    ),
+                                  ),
                                   Padding(
-                                    padding: EdgeInsets.only(top: 24),
+                                    padding: EdgeInsets.only(top: 16),
                                     child: ButtonLoading(
                                       backgroundColor: ThemeColor.primary,
                                       disable: _loginCt.loading.value,
