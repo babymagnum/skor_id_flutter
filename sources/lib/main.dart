@@ -1,20 +1,21 @@
 import 'dart:async';
 import 'dart:io';
+
 import 'package:connectivity/connectivity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/screenutil_init.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pln_flutter/utils/controller/common_controller.dart';
-import 'package:pln_flutter/utils/helper/locales_string.dart';
 import 'package:pln_flutter/utils/helper/constant.dart';
+import 'package:pln_flutter/utils/helper/locales_string.dart';
 import 'package:pln_flutter/utils/helper/text_util.dart';
-import 'package:pln_flutter/view/home/home_view.dart';
 import 'package:pln_flutter/view/login/login_view.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:pln_flutter/view/main/main_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final globalNavigatorKey = GlobalKey<NavigatorState>();
@@ -45,8 +46,8 @@ class _MyAppState extends State<MyApp> {
   }
 
   _navigateTo(String redirect) {
-    if (redirect == 'home') {
-      Get.to(HomeView());
+    if (redirect == 'main') {
+      Get.to(MainView());
     }
   }
 
@@ -168,7 +169,7 @@ class _MyAppState extends State<MyApp> {
       builder: () => GetMaterialApp(
         title: 'SIMKP PLN',
         navigatorKey: globalNavigatorKey,
-        home: (commonController?.preferences?.getBool(Constant.IS_LOGIN) ?? false) ? HomeView() : LoginView(),
+        home: (commonController?.preferences?.getBool(Constant.IS_LOGIN) ?? false) ? MainView() : LoginView(),
         translations: LocalesString(),
         locale: Locale(commonController.language.value),
         fallbackLocale: Locale(Constant.INDONESIAN),

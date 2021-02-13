@@ -5,7 +5,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pln_flutter/main.dart';
 import 'package:pln_flutter/utils/helper/constant.dart';
 import 'package:pln_flutter/utils/helper/text_util.dart';
-import 'package:pln_flutter/view/home/home_view.dart';
+import 'package:pln_flutter/view/main/main_view.dart';
 
 class LoginController extends GetxController {
   var obsecure = true.obs;
@@ -73,7 +73,7 @@ class LoginController extends GetxController {
       
       if(user != null){
         commonController.preferences.setBool(Constant.IS_LOGIN, true);
-        Get.off(HomeView());
+        Get.off(MainView());
       }
     } catch (e) {
       Get.snackbar('Sorry', 'Please login with email instead', 
@@ -109,6 +109,6 @@ class LoginController extends GetxController {
     loading.value = false;
 
     commonController.preferences.setBool(Constant.IS_LOGIN, true);
-    Get.off(HomeView());
+    Get.off(MainView());
   }
 }
