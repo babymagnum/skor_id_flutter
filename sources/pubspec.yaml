@@ -29,7 +29,11 @@ dependencies:
   cached_network_image: ^2.5.0
   #improvement of Container widget
   division: ^0.8.8
+  #firebase cloud messagging and auth
   firebase_messaging:
+  firebase_auth:
+  google_sign_in:
+  #local notification for in app fcm
   flutter_local_notifications: ^4.0.0
   #auto size text
   auto_size_text: ^2.1.0

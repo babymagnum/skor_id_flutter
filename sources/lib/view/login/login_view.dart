@@ -126,7 +126,7 @@ class LoginView extends StatelessWidget {
                                     padding: EdgeInsets.only(top: 14),
                                     child: GestureDetector(
                                       onTap: _loginCt.loginWithGoogle,
-                                      child: Text('Atau masuk dengan ', style: ThemeTextStyle.biryaniRegular.apply(fontSizeDelta: 14, color: Colors.white))
+                                      child: Text('Atau masuk dengan Google', style: ThemeTextStyle.biryaniRegular.apply(fontSizeDelta: 14, color: Colors.white))
                                     ),
                                   )
                                 ],

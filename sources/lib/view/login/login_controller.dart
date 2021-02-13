@@ -1,7 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pln_flutter/main.dart';
+import 'package:pln_flutter/utils/helper/constant.dart';
 import 'package:pln_flutter/utils/helper/text_util.dart';
+import 'package:pln_flutter/view/home/home_view.dart';
 
 class LoginController extends GetxController {
   var obsecure = true.obs;
@@ -41,10 +45,6 @@ class LoginController extends GetxController {
   }
 
   loginWithGoogle(){
-    if(!validateInput()){
-      return;
-    }
-
     if(commonController.notConnected.value){
       Get.snackbar('Sorry', 'Your device not connected to the internet', 
         snackPosition: SnackPosition.BOTTOM,
@@ -54,6 +54,39 @@ class LoginController extends GetxController {
       );
       return;
     }
+
+    signInWithGoogle();
+  }
+
+  signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+      final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        accessToken: googleSignInAuthentication.accessToken,
+        idToken: googleSignInAuthentication.idToken,
+      );
+
+      await auth.signInWithCredential(credential);
+      User user = auth.currentUser;
+      print('User ${user.email}, ${user.displayName}');
+      
+      if(user != null){
+        commonController.preferences.setBool(Constant.IS_LOGIN, true);
+        Get.off(HomeView());
+      }
+    } catch (e) {
+      Get.snackbar('Sorry', 'Please login with email instead', 
+        snackPosition: SnackPosition.BOTTOM,
+        margin: EdgeInsets.all(16),
+        colorText: Colors.black,
+        backgroundColor: Colors.white
+      );
+    }
+  }
+
+  signOutWithGoogle() async {
+    await googleSignIn.signOut();
   }
 
   login() async {
@@ -75,7 +108,7 @@ class LoginController extends GetxController {
     await Future.delayed(Duration(seconds: 3), () {});
     loading.value = false;
 
-    // commonController.preferences.setBool(Constant.IS_LOGIN, true);
-    // Get.off(HomeView());
+    commonController.preferences.setBool(Constant.IS_LOGIN, true);
+    Get.off(HomeView());
   }
 }
