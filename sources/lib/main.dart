@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:io';
-
 import 'package:connectivity/connectivity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -16,11 +15,12 @@ import 'package:pln_flutter/utils/helper/locales_string.dart';
 import 'package:pln_flutter/utils/helper/text_util.dart';
 import 'package:pln_flutter/view/login/login_view.dart';
 import 'package:pln_flutter/view/main/main_view.dart';
+import 'package:pln_flutter/view/splash/splash_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-final globalNavigatorKey = GlobalKey<NavigatorState>();
+final GlobalKey globalNavigatorKey = GlobalKey<NavigatorState>();
 final FirebaseMessaging firebaseMessaging = FirebaseMessaging();
-final commonController = Get.put(CommonController(), permanent: true);
+final CommonController commonController = Get.put(CommonController(), permanent: true);
 final FirebaseAuth auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();
 
@@ -41,9 +41,7 @@ class _MyAppState extends State<MyApp> {
 
   StreamSubscription _connection, _fcmRefreshToken;
 
-  _connectivityResult(ConnectivityResult result) {
-    commonController.checkConnection();
-  }
+  _connectivityResult() => commonController.checkConnection();
 
   _navigateTo(String redirect) {
     if (redirect == 'main') {
@@ -150,10 +148,10 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
 
-    Connectivity().checkConnectivity().then((result) => _connectivityResult(result));
+    Connectivity().checkConnectivity().then((result) => _connectivityResult());
 
     _connection = Connectivity().onConnectivityChanged
-        .listen((ConnectivityResult result) => _connectivityResult(result));
+        .listen((ConnectivityResult result) => _connectivityResult());
 
     _initFCM();
   }
@@ -169,7 +167,7 @@ class _MyAppState extends State<MyApp> {
       builder: () => GetMaterialApp(
         title: 'SIMKP PLN',
         navigatorKey: globalNavigatorKey,
-        home: (commonController?.preferences?.getBool(Constant.IS_LOGIN) ?? false) ? MainView() : LoginView(),
+        home: SplashView(),
         translations: LocalesString(),
         locale: Locale(commonController.language.value),
         fallbackLocale: Locale(Constant.INDONESIAN),
