@@ -30,7 +30,7 @@ dependencies:
   #improvement of Container widget
   division: ^0.8.8
   #firebase cloud messagging and auth
-  firebase_messaging:
+  firebase_messaging: ^7.0.3
   firebase_auth:
   google_sign_in:
   #local notification for in app fcm

@@ -13,7 +13,6 @@ import 'package:pln_flutter/utils/controller/common_controller.dart';
 import 'package:pln_flutter/utils/helper/constant.dart';
 import 'package:pln_flutter/utils/helper/locales_string.dart';
 import 'package:pln_flutter/utils/helper/text_util.dart';
-import 'package:pln_flutter/view/login/login_view.dart';
 import 'package:pln_flutter/view/main/main_view.dart';
 import 'package:pln_flutter/view/splash/splash_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
