@@ -164,7 +164,7 @@ class _MyAppState extends State<MyApp> {
       designSize: Size(360, 640),
       allowFontScaling: true,
       builder: () => GetMaterialApp(
-        title: 'SIMKP PLN',
+        title: 'Balelabs Flutter',
         navigatorKey: globalNavigatorKey,
         home: SplashView(),
         translations: LocalesString(),

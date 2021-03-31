@@ -26,7 +26,7 @@ class BaseView extends StatelessWidget {
 
     return Scaffold(
       appBar: isUseAppbar ? _appBar : null,
-      resizeToAvoidBottomPadding: true,
+      resizeToAvoidBottomInset: true,
       bottomNavigationBar: bottomNavigationBar,
       body: Stack(
         children: [
