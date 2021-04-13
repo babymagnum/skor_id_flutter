@@ -1,6 +1,6 @@
-import 'package:division/division.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 import 'package:pln_flutter/utils/theme/theme_color.dart';
 import 'package:pln_flutter/utils/theme/theme_text_style.dart';
 import 'package:pln_flutter/utils/widgets/button_loading.dart';
@@ -19,14 +19,17 @@ class DialogError extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-    final size = MediaQuery.of(context).size;
-
     return Column(
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Parent(
-          style: ParentStyle()..margin(horizontal: 24.w)..borderRadius(all: 6)..background.color(Colors.white)..padding(horizontal: 24.w, vertical: 24.h),
+        Container(
+          margin: EdgeInsets.symmetric(horizontal: 24.w),
+          padding: EdgeInsets.symmetric(horizontal: 24.w, vertical: 24.h),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.all(Radius.circular(6)),
+            color: Colors.white
+          ),
           child: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -36,20 +39,33 @@ class DialogError extends StatelessWidget {
                 Text(error, textAlign: TextAlign.center, maxLines: 5, overflow: TextOverflow.ellipsis, style: ThemeTextStyle.robotoRegular.apply(color: Color(0xFF0D1522), fontSizeDelta: 14.ssp, decoration: TextDecoration.none),),
                 SizedBox(height: 24.h,),
                 button2 == null ?
-                Parent(
-                  gesture: Gestures()..onTap(buttonClick),
-                  style: ParentStyle()..background.color(ThemeColor.primary)..borderRadius(all: 6)..padding(vertical: 15.h)..ripple(true)..width(size.width),
-                  child: Text(button, textAlign: TextAlign.center, style: ThemeTextStyle.robotoRegular.apply(color: Colors.white, fontSizeDelta: 14.ssp),),
+                InkWell(
+                  onTap: buttonClick,
+                  child: Container(
+                    width: Get.width,
+                    padding: EdgeInsets.symmetric(vertical: 15.h),
+                    decoration: BoxDecoration(
+                      color: ThemeColor.primary,
+                      borderRadius: BorderRadius.all(Radius.circular(6))
+                    ),
+                    child: Text(button, textAlign: TextAlign.center, style: ThemeTextStyle.robotoRegular.apply(color: Colors.white, fontSizeDelta: 14.ssp),),
+                  ),
                 ) :
                 Row(
                   children: <Widget>[
                     Expanded(
-                      child: Parent(
-                        gesture: Gestures()..onTap(buttonClick),
-                        style: ParentStyle()..background.color(Colors.white)..borderRadius(all: 6)..ripple(true)..width(size.width)..height(48.h)
-                          ..border(all: 1, color: ThemeColor.primary),
-                        child: Center(
-                          child: Text(button, textAlign: TextAlign.center, style: ThemeTextStyle.robotoRegular.apply(color: ThemeColor.primary, fontSizeDelta: 14.ssp),),
+                      child: InkWell(
+                        onTap: buttonClick,
+                        child: Container(
+                          width: Get.width, height: 48.h,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all(Radius.circular(6)),
+                            border: Border.all(width: 1, color: ThemeColor.primary)
+                          ),
+                          child: Center(
+                            child: Text(button, textAlign: TextAlign.center, style: ThemeTextStyle.robotoRegular.apply(color: ThemeColor.primary, fontSizeDelta: 14.ssp),),
+                          ),
                         ),
                       ),
                     ),
