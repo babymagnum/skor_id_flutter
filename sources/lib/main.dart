@@ -2,11 +2,12 @@ import 'dart:async';
 import 'dart:io';
 import 'package:connectivity/connectivity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:flutter_screenutil/screenutil_init.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pln_flutter/utils/controller/common_controller.dart';
@@ -18,15 +19,68 @@ import 'package:pln_flutter/view/splash/splash_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final GlobalKey globalNavigatorKey = GlobalKey<NavigatorState>();
-final FirebaseMessaging firebaseMessaging = FirebaseMessaging();
+final FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
 final CommonController commonController = Get.put(CommonController(), permanent: true);
 final FirebaseAuth auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   await commonController.initValue();
   runApp(MyApp());
+}
+
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage event) async {
+  // If you're going to use other Firebase services in the background, such as Firestore,
+  // make sure you call `initializeApp` before using other Firebase services.
+  await Firebase.initializeApp();
+
+  String title = event.data['notification']['title'] ?? '';
+
+  if (Platform.isAndroid && title != '') await _showAndroidNotification(event.data);
+  print('onBackground: ${event.data}');
+  _redirectTo(event.data);
+  return Future.value(true);
+}
+
+_redirectTo(Map<String, dynamic> message) async {
+  final redirect = Platform.isAndroid ? message['data']['type'].toString() ?? '' : message['type'].toString() ?? '';
+
+  _navigateTo(redirect);
+}
+
+_showAndroidNotification(Map<String, dynamic> message) async {
+  var androidSetting = AndroidInitializationSettings('bisnis_koe_logo');
+  var iosSetting = IOSInitializationSettings();
+  var initializationSettings = InitializationSettings(android: androidSetting, iOS: iosSetting);
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+  flutterLocalNotificationsPlugin.initialize(initializationSettings, onSelectNotification: (_) => _onSelectNotification(message));
+
+  String title = message['notification']['title'];
+  String body = message['notification']['body'];
+
+  var androidPlatformChannelSpecifics = AndroidNotificationDetails(
+      'balelabs.flutter.core', 'balelabs.flutter.core', 'balelabs.flutter.core',
+      importance: Importance.max, priority: Priority.high);
+  var iOSPlatformChannelSpecifics = IOSNotificationDetails();
+  var platformChannelSpecifics = NotificationDetails(android: androidPlatformChannelSpecifics, iOS: iOSPlatformChannelSpecifics);
+  await flutterLocalNotificationsPlugin.show(TextUtil.randomInt(0, 1000), title, body, platformChannelSpecifics);
+}
+
+_onSelectNotification(Map<String, dynamic> message) async {
+  final redirect = Platform.isAndroid ? message['data']['type'].toString() ?? '' : message['type'].toString() ?? '';
+  final preference = await SharedPreferences.getInstance();
+  final showForegroundNotification = preference.getBool(Constant.SHOW_FOREGROUND_NOTIFICATION) ?? false;
+
+  if (showForegroundNotification) _navigateTo(redirect);
+}
+
+_navigateTo(String redirect) {
+  if (redirect == 'main') {
+    Get.to(MainView());
+  }
 }
 
 class MyApp extends StatefulWidget {
@@ -42,81 +96,42 @@ class _MyAppState extends State<MyApp> {
 
   _connectivityResult() => commonController.checkConnection();
 
-  _navigateTo(String redirect) {
-    if (redirect == 'main') {
-      Get.to(MainView());
-    }
-  }
-
-  _redirectTo(Map<String, dynamic> message) async {
-    final redirect = Platform.isAndroid ? message['data']['type'].toString() ?? '' : message['type'].toString() ?? '';
-
-    _navigateTo(redirect);
-  }
-
-  _onSelectNotification(Map<String, dynamic> message) async {
-    final redirect = Platform.isAndroid ? message['data']['type'].toString() ?? '' : message['type'].toString() ?? '';
-    final preference = await SharedPreferences.getInstance();
-    final showForegroundNotification = preference.getBool(Constant.SHOW_FOREGROUND_NOTIFICATION) ?? false;
-
-    if (showForegroundNotification) _navigateTo(redirect);
-  }
-
-  _showAndroidNotification(Map<String, dynamic> message) async {
-    var androidSetting = AndroidInitializationSettings('bisnis_koe_logo');
-    var iosSetting = IOSInitializationSettings();
-    var initializationSettings = InitializationSettings(android: androidSetting, iOS: iosSetting);
-    FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-    flutterLocalNotificationsPlugin.initialize(initializationSettings, onSelectNotification: (_) => _onSelectNotification(message));
-
-    String title = message['notification']['title'];
-    String body = message['notification']['body'];
-
-    var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-        'balelabs.flutter.core', 'balelabs.flutter.core', 'balelabs.flutter.core',
-        importance: Importance.max, priority: Priority.high);
-    var iOSPlatformChannelSpecifics = IOSNotificationDetails();
-    var platformChannelSpecifics = NotificationDetails(android: androidPlatformChannelSpecifics, iOS: iOSPlatformChannelSpecifics);
-    await flutterLocalNotificationsPlugin.show(TextUtil.randomInt(0, 1000), title, body, platformChannelSpecifics);
-  }
-
   _fcmListener() {
-    firebaseMessaging.configure(
-      /// Android : For now fired when apps is in foreground
-      onMessage: (Map<String, dynamic> message) async {
-        final preference = await SharedPreferences.getInstance();
-        preference.setBool(Constant.SHOW_FOREGROUND_NOTIFICATION, false);
-        if (Platform.isAndroid) await _showAndroidNotification(message);
-        print("onMessage: $message");
+    FirebaseMessaging.onMessage.listen((event) async {
+      final preference = await SharedPreferences.getInstance();
+      preference.setBool(Constant.SHOW_FOREGROUND_NOTIFICATION, false);
+      if (Platform.isAndroid) await _showAndroidNotification(event.data);
+      print("onMessage: ${event.data}");
 
-        // below code is use only in android platform to prevent onmessage called when notification is not clicked
-        Future.delayed(Duration(milliseconds: 500), () => preference.setBool(Constant.SHOW_FOREGROUND_NOTIFICATION, true));
+      // below code is use only in android platform to prevent onmessage called when notification is not clicked
+      Future.delayed(Duration(milliseconds: 500), () => preference.setBool(Constant.SHOW_FOREGROUND_NOTIFICATION, true));
 
-        return Future.value(true);
-      },
-      /// Android : Fired when notification clicked and the apps is killed
-      onLaunch: (Map<String, dynamic> message) async {
-        String title = message['notification']['title'] ?? '';
+      return Future.value(true);
+    });
 
-        if (Platform.isAndroid && title != '') await _showAndroidNotification(message);
-        print("onLaunch: $message");
-        _redirectTo(message);
-        return Future.value(true);
-      },
-      /// Fired when notification clicked and apps is in background
-      onResume: (Map<String, dynamic> message) async {
-        String title = message['notification']['title'] ?? '';
+    FirebaseMessaging.onMessageOpenedApp.listen((event) async {
+      String title = event.data['notification']['title'] ?? '';
 
-        if (Platform.isAndroid && title != '') await _showAndroidNotification(message);
-        print("onResume: $message");
-        _redirectTo(message);
-        return Future.value(true);
-      },
-    );
+      if (Platform.isAndroid && title != '') await _showAndroidNotification(event.data);
+      print("onResume: ${event.data}");
+      _redirectTo(event.data);
+      return Future.value(true);
+    });
   }
 
   _initFCM() async {
-    firebaseMessaging.requestNotificationPermissions(IosNotificationSettings(sound: true, badge: true, alert: true, provisional: true));
+    NotificationSettings settings = await firebaseMessaging.requestPermission(
+      alert: true,
+      announcement: true,
+      badge: true,
+      carPlay: false,
+      criticalAlert: false,
+      provisional: false,
+      sound: true,
+    );
+
+    print('User granted permission: ${settings.authorizationStatus}');
+
     await _getFcmToken();
     _fcmListener();
   }
@@ -160,9 +175,7 @@ class _MyAppState extends State<MyApp> {
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
     return ScreenUtilInit(
-      // TODO: Change Size based on design draft later
       designSize: Size(360, 640),
-      allowFontScaling: true,
       builder: () => GetMaterialApp(
         title: 'Balelabs Flutter',
         navigatorKey: globalNavigatorKey,
@@ -174,4 +187,5 @@ class _MyAppState extends State<MyApp> {
       ),
     );
   }
+
 }

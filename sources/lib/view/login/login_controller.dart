@@ -73,7 +73,7 @@ class LoginController extends GetxController {
       
       if(user != null){
         commonController.preferences.setBool(Constant.IS_LOGIN, true);
-        Get.off(MainView());
+        Get.off(() => MainView());
       }
     } catch (e) {
       Get.snackbar('Sorry', 'Please login with email instead', 
@@ -109,6 +109,6 @@ class LoginController extends GetxController {
     loading.value = false;
 
     commonController.preferences.setBool(Constant.IS_LOGIN, true);
-    Get.off(MainView());
+    Get.off(() => MainView());
   }
 }
