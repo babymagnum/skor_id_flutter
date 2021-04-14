@@ -4,7 +4,7 @@ import 'package:pln_flutter/utils/theme/theme_text_style.dart';
 
 class NoConnection extends StatelessWidget {
 
-  NoConnection({@required this.height});
+  NoConnection({required this.height});
 
   final double height;
 

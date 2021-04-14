@@ -12,15 +12,15 @@ class ForgotPasswordController extends GetxController{
   
   emailOnChange(String value) => email.value = value;
 
-  String emailValidate(String value){
-    if(!TextUtil.validateEmail(value))
+  String? emailValidate(String? value){
+    if(!TextUtil.validateEmail(value!))
       return 'Masukkan email dengan format benar';
     else
       return null;
   }
 
   bool validateInput(){
-    if(formKey.currentState.validate()){
+    if(formKey.currentState!.validate()){
       return true;
     }else{
       autoValidate.value = true;

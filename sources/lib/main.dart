@@ -58,8 +58,8 @@ _showAndroidNotification(Map<String, dynamic> message) async {
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
   flutterLocalNotificationsPlugin.initialize(initializationSettings, onSelectNotification: (_) => _onSelectNotification(message));
 
-  String title = message['notification']['title'];
-  String body = message['notification']['body'];
+  String? title = message['notification']['title'];
+  String? body = message['notification']['body'];
 
   var androidPlatformChannelSpecifics = AndroidNotificationDetails(
       'balelabs.flutter.core', 'balelabs.flutter.core', 'balelabs.flutter.core',
@@ -92,7 +92,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
 
-  StreamSubscription _connection, _fcmRefreshToken;
+  StreamSubscription? _connection, _fcmRefreshToken;
 
   _connectivityResult() => commonController.checkConnection();
 
@@ -139,10 +139,10 @@ class _MyAppState extends State<MyApp> {
   _getFcmToken() async {
     final preference = await SharedPreferences.getInstance();
 
-    firebaseMessaging.getToken().then((String token) {
+    firebaseMessaging.getToken().then((String? token) {
       assert(token != null);
       print("FCM_TOKEN $token");
-      preference.setString(Constant.FCM_TOKEN, token);
+      preference.setString(Constant.FCM_TOKEN, token!);
     });
     _fcmRefreshToken = firebaseMessaging.onTokenRefresh.listen((newToken) {
       print("NEW_FCM_TOKEN $newToken");
@@ -178,7 +178,7 @@ class _MyAppState extends State<MyApp> {
       designSize: Size(360, 640),
       builder: () => GetMaterialApp(
         title: 'Balelabs Flutter',
-        navigatorKey: globalNavigatorKey,
+        navigatorKey: globalNavigatorKey as GlobalKey<NavigatorState>?,
         home: SplashView(),
         translations: LocalesString(),
         locale: Locale(commonController.language.value),

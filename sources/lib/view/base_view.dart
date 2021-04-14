@@ -7,11 +7,11 @@ import 'package:pln_flutter/main.dart';
 
 class BaseView extends StatelessWidget {
   final bool isUseAppbar;
-  final String appbarTitle;
-  final IconButton appbarLeading;
+  final String? appbarTitle;
+  final IconButton? appbarLeading;
   final Widget child;
-  final BottomNavigationBar bottomNavigationBar;
-  BaseView({this.isUseAppbar:false, this.appbarTitle, this.appbarLeading, @required this.child, this.bottomNavigationBar});
+  final BottomNavigationBar? bottomNavigationBar;
+  BaseView({this.isUseAppbar:false, this.appbarTitle, this.appbarLeading, required this.child, this.bottomNavigationBar});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class BaseView extends StatelessWidget {
     );
 
     return Scaffold(
-      appBar: isUseAppbar ? _appBar : null,
+      appBar: isUseAppbar ? _appBar as PreferredSizeWidget? : null,
       resizeToAvoidBottomInset: true,
       bottomNavigationBar: bottomNavigationBar,
       body: Stack(

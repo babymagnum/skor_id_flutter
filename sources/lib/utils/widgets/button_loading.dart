@@ -3,27 +3,27 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ButtonLoading extends StatelessWidget {
 
-  ButtonLoading({Key key, @required this.backgroundColor, @required this.disable,
-    @required this.title, @required this.loading, @required this.onTap, this.textStyle,
+  ButtonLoading({Key? key, required this.backgroundColor, required this.disable,
+    required this.title, required this.loading, required this.onTap, this.textStyle,
     this.verticalPadding = 5, this.horizontalPadding = 10, this.loadingSize = 17,
     this.borderRadius = 6}): super(key: key);
 
-  final String title;
+  final String? title;
   final bool loading;
-  final Function onTap;
+  final Function? onTap;
   final bool disable;
   final Color backgroundColor;
   final double verticalPadding;
   final double horizontalPadding;
   final double loadingSize;
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
   final double borderRadius;
 
   @override
   Widget build(BuildContext context) {
     TextStyle _textStyle = textStyle ?? TextStyle();
     return InkWell(
-      onTap: disable ? null : onTap,
+      onTap: disable ? null : onTap as void Function()?,
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: horizontalPadding.w, vertical: verticalPadding.h),
         decoration: BoxDecoration(
@@ -38,7 +38,7 @@ class ButtonLoading extends StatelessWidget {
                 opacity: 0,
                 child: Padding(
                   padding: EdgeInsets.only(top: 3.h),
-                  child: Text(title, style: _textStyle),
+                  child: Text(title!, style: _textStyle),
                 ),
               ),
               Positioned(
@@ -59,7 +59,7 @@ class ButtonLoading extends StatelessWidget {
           ) :
           Padding(
             padding: EdgeInsets.only(top: 3.h),
-            child: Text(title, style: _textStyle),
+            child: Text(title!, style: _textStyle),
           ),
         ),
       ),

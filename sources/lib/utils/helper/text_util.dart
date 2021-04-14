@@ -9,13 +9,13 @@ class TextUtil {
 
   static bool validateNumber(String text) {
     Pattern pattern = r'^\D?(\d{3})\D?\D?(\d{3})\D?(\d{4})$';
-    RegExp regex = RegExp(pattern);
+    RegExp regex = RegExp(pattern as String);
     return regex.hasMatch(text);
   }
 
   static bool validateEmail(String text) {
     Pattern pattern = r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-    RegExp regex = RegExp(pattern);
+    RegExp regex = RegExp(pattern as String);
     return regex.hasMatch(text);
   }
 
@@ -25,7 +25,7 @@ class TextUtil {
         : value[0].toUpperCase();
   }
 
-  static String toRupiah(String symbol, int value, bool noRp) {
+  static String toRupiah(String? symbol, int value, bool noRp) {
     return '${noRp ? '' : 'Rp '}${value.toString().replaceAllMapped(RegExp(r'(\d{1,3})(?=(\d{3})+(?!\d))'), (Match m) => '${m[1]}${symbol == null ? '.' : symbol}')}';
   }
 
@@ -89,18 +89,6 @@ class TextUtil {
   static String dateTimeToString(DateTime dateTime, String pattern) {
     final DateFormat formatter = DateFormat(pattern, commonController.language.value);
     return formatter.format(dateTime);
-  }
-
-  static String shortenedNumber(String text) {
-    if (text.length <= 6) {
-      // ribuan
-    } else if (text.length <= 9) {
-      // jutaan
-    } else if (text.length <= 12) {
-      // milyaran
-    } else if (text.length <= 15) {
-      // trilyunan
-    }
   }
 
   static int randomInt(int min, int max) => min + Random().nextInt(max - min);

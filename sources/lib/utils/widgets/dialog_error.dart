@@ -7,14 +7,14 @@ import 'package:pln_flutter/utils/widgets/button_loading.dart';
 
 class DialogError extends StatelessWidget {
 
-  DialogError({Key key, this.button2, this.button2Click, this.icons, @required this.error, @required this.button, @required this.buttonClick}): super(key: key);
+  DialogError({Key? key, this.button2, this.button2Click, this.icons, required this.error, required this.button, required this.buttonClick}): super(key: key);
 
   final String error;
   final String button;
   final Function buttonClick;
-  final IconData icons;
-  final String button2;
-  final Function button2Click;
+  final IconData? icons;
+  final String? button2;
+  final Function? button2Click;
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +40,7 @@ class DialogError extends StatelessWidget {
                 SizedBox(height: 24.h,),
                 button2 == null ?
                 InkWell(
-                  onTap: buttonClick,
+                  onTap: buttonClick as void Function()?,
                   child: Container(
                     width: Get.width,
                     padding: EdgeInsets.symmetric(vertical: 15.h),
@@ -55,7 +55,7 @@ class DialogError extends StatelessWidget {
                   children: <Widget>[
                     Expanded(
                       child: InkWell(
-                        onTap: buttonClick,
+                        onTap: buttonClick as void Function()?,
                         child: Container(
                           width: Get.width, height: 48.h,
                           decoration: BoxDecoration(

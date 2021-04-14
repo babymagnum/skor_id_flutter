@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -21,22 +22,22 @@ class LoginController extends GetxController {
 
   passwordOnChange(String value) => password.value = value;
 
-  String emailValidate(String value){
-    if(!TextUtil.validateEmail(value))
+  String? emailValidate(String? value){
+    if(!TextUtil.validateEmail(value!))
       return 'Masukkan email dengan format benar';
     else
       return null;
   }
 
-  String passwordValidate(String value){
-    if(value.length < 4)
+  String? passwordValidate(String? value){
+    if(value!.length < 4)
       return 'Masukkan password minimal 4 karater';
     else
       return null;
   }
 
   bool validateInput(){
-    if(formKey.currentState.validate()){
+    if(formKey.currentState!.validate()){
       return true;
     }else{
       autoValidate.value = true;
@@ -60,7 +61,7 @@ class LoginController extends GetxController {
 
   signInWithGoogle() async {
     try {
-      final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
+      final GoogleSignInAccount googleSignInAccount = await (googleSignIn.signIn() as FutureOr<GoogleSignInAccount>);
       final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount.authentication;
       final AuthCredential credential = GoogleAuthProvider.credential(
         accessToken: googleSignInAuthentication.accessToken,
@@ -68,11 +69,11 @@ class LoginController extends GetxController {
       );
 
       await auth.signInWithCredential(credential);
-      User user = auth.currentUser;
+      User user = auth.currentUser!;
       print('User ${user.email}, ${user.displayName}');
       
       if(user != null){
-        commonController.preferences.setBool(Constant.IS_LOGIN, true);
+        commonController.preferences!.setBool(Constant.IS_LOGIN, true);
         Get.off(() => MainView());
       }
     } catch (e) {
@@ -108,7 +109,7 @@ class LoginController extends GetxController {
     await Future.delayed(Duration(seconds: 3), () {});
     loading.value = false;
 
-    commonController.preferences.setBool(Constant.IS_LOGIN, true);
+    commonController.preferences!.setBool(Constant.IS_LOGIN, true);
     Get.off(() => MainView());
   }
 }

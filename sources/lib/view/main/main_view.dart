@@ -5,7 +5,7 @@ import 'package:pln_flutter/view/base_view.dart';
 import 'package:pln_flutter/view/main/main_controller.dart';
 
 class MainView extends StatefulWidget {
-  final int initPage;
+  final int? initPage;
   MainView({this.initPage});
 
   @override
@@ -18,7 +18,7 @@ class _MainViewState extends State<MainView> {
   @override
   void initState() {
     super.initState();
-    if(widget.initPage != null) _mainCt.currentPageOnChange(widget.initPage);
+    if(widget.initPage != null) _mainCt.currentPageOnChange(widget.initPage!);
   }
 
   @override

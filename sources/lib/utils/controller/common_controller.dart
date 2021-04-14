@@ -8,7 +8,7 @@ class CommonController extends GetxController {
 
   var notConnected = false.obs;
   var language = Constant.INDONESIAN.obs;
-  SharedPreferences preferences;
+  SharedPreferences? preferences;
 
   checkConnection() async{
     var _check = await GetConnect().get('https://google.com');

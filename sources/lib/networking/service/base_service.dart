@@ -24,7 +24,7 @@ class BaseService {
       var responseMap = jsonDecode(response.toString());
       resultResponse = fromJson<T>(responseMap);
     } on DioError catch (e) {
-      if (e.response.statusCode == 302 && e.response.toString().contains('http://plis.id/plis_api/login')) {
+      if (e.response!.statusCode == 302 && e.response.toString().contains('http://plis.id/plis_api/login')) {
         final preference = await SharedPreferences.getInstance();
         preference.clear();
       }
@@ -128,7 +128,7 @@ class BaseService {
   /// Converter json to dart object
   static T fromJson<T>(dynamic json) {
     if (json is Iterable) {
-      return _fromJsonList<T>(json) as T;
+      return _fromJsonList<T>(json as List<dynamic>) as T;
     } else if (T == Standart) {
       return Standart.fromJson(json) as T;
     } else {
@@ -139,15 +139,15 @@ class BaseService {
   }
 
   //from json list
-  static List<T> _fromJsonList<T>(List jsonList) {
+  static List<T> _fromJsonList<T>(List? jsonList) {
 
     if (jsonList == null) {
-      return null;
+      return <T>[];
     }
 
-    List<T> output = List();
+    List<T> output = [];
 
-    for (Map<String, dynamic> json in jsonList) {
+    for (Map<String, dynamic> json in jsonList as Iterable<Map<String, dynamic>>) {
       output.add(fromJson(json));
     }
 

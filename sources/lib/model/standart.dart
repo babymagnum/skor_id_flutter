@@ -1,6 +1,6 @@
 class Standart {
-    String message;
-    String status;
+    String? message;
+    String? status;
 
     Standart({this.message, this.status});
 

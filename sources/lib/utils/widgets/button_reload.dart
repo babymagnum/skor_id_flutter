@@ -6,14 +6,14 @@ import 'package:pln_flutter/utils/theme/theme_text_style.dart';
 
 class ButtonReload extends StatelessWidget {
 
-  ButtonReload({@required this.onTap});
+  ButtonReload({required this.onTap});
 
   final Function onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTap: onTap as void Function()?,
       child: Row(
         children: [
           SvgPicture.asset('assets/images/Refresh.svg', width: 13.w, height: 13.w, color: ThemeColor.secondary,),

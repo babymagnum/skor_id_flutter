@@ -4,14 +4,14 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class ShimmerNetworkImage extends StatelessWidget {
 
-  ShimmerNetworkImage({Key key, this.errorImage, @required this.url, @required this.size,
-    @required this.borderRadius, @required this.boxFit, this.onlyTopLeftRight = false}): super (key: key);
+  ShimmerNetworkImage({Key? key, this.errorImage, required this.url, required this.size,
+    required this.borderRadius, required this.boxFit, this.onlyTopLeftRight = false}): super (key: key);
 
   final String url;
   final Size size;
   final double borderRadius;
   final BoxFit boxFit;
-  final String errorImage;
+  final String? errorImage;
   final bool onlyTopLeftRight;
 
   @override
@@ -31,7 +31,7 @@ class ShimmerNetworkImage extends StatelessWidget {
         ),
         imageUrl: url,
         errorWidget: (context, _, __) => SvgPicture.asset(
-          errorImage == null ? 'assets/images/profile.svg' : errorImage,
+          errorImage == null ? 'assets/images/profile.svg' : errorImage!,
           width: size.width,
           height: size.height,
           fit: BoxFit.cover,
