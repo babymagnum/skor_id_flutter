@@ -3,10 +3,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:pln_flutter/main.dart';
-import 'package:pln_flutter/utils/helper/constant.dart';
-import 'package:pln_flutter/utils/helper/text_util.dart';
-import 'package:pln_flutter/view/main/main_view.dart';
+import 'package:skor_id_flutter/main.dart';
+import 'package:skor_id_flutter/utils/helper/constant.dart';
+import 'package:skor_id_flutter/utils/helper/text_util.dart';
+import 'package:skor_id_flutter/view/main/main_view.dart';
 
 class LoginController extends GetxController {
   var obsecure = true.obs;
@@ -69,10 +69,10 @@ class LoginController extends GetxController {
       );
 
       await auth.signInWithCredential(credential);
-      User user = auth.currentUser!;
-      print('User ${user.email}, ${user.displayName}');
+      User? user = auth.currentUser;
       
       if(user != null){
+        print('User ${user.email}, ${user.displayName}');
         commonController.preferences!.setBool(Constant.IS_LOGIN, true);
         Get.off(() => MainView());
       }

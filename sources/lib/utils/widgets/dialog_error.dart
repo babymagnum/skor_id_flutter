@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:pln_flutter/utils/theme/theme_color.dart';
-import 'package:pln_flutter/utils/theme/theme_text_style.dart';
-import 'package:pln_flutter/utils/widgets/button_loading.dart';
+import 'package:skor_id_flutter/utils/theme/theme_color.dart';
+import 'package:skor_id_flutter/utils/theme/theme_text_style.dart';
+import 'package:skor_id_flutter/utils/widgets/button_loading.dart';
 
 class DialogError extends StatelessWidget {
 

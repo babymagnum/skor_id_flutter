@@ -10,12 +10,12 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:pln_flutter/utils/controller/common_controller.dart';
-import 'package:pln_flutter/utils/helper/constant.dart';
-import 'package:pln_flutter/utils/helper/locales_string.dart';
-import 'package:pln_flutter/utils/helper/text_util.dart';
-import 'package:pln_flutter/view/main/main_view.dart';
-import 'package:pln_flutter/view/splash/splash_view.dart';
+import 'package:skor_id_flutter/utils/controller/common_controller.dart';
+import 'package:skor_id_flutter/utils/helper/constant.dart';
+import 'package:skor_id_flutter/utils/helper/locales_string.dart';
+import 'package:skor_id_flutter/utils/helper/text_util.dart';
+import 'package:skor_id_flutter/view/main/main_view.dart';
+import 'package:skor_id_flutter/view/splash/splash_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final GlobalKey globalNavigatorKey = GlobalKey<NavigatorState>();
@@ -46,7 +46,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage event) async {
 }
 
 _redirectTo(Map<String, dynamic> message) async {
-  final redirect = Platform.isAndroid ? message['data']['type'].toString() ?? '' : message['type'].toString() ?? '';
+  final redirect = Platform.isAndroid ? message['data']['type'].toString() : message['type'].toString();
 
   _navigateTo(redirect);
 }
@@ -70,7 +70,7 @@ _showAndroidNotification(Map<String, dynamic> message) async {
 }
 
 _onSelectNotification(Map<String, dynamic> message) async {
-  final redirect = Platform.isAndroid ? message['data']['type'].toString() ?? '' : message['type'].toString() ?? '';
+  final redirect = Platform.isAndroid ? message['data']['type'].toString() : message['type'].toString();
   final preference = await SharedPreferences.getInstance();
   final showForegroundNotification = preference.getBool(Constant.SHOW_FOREGROUND_NOTIFICATION) ?? false;
 

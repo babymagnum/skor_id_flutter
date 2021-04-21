@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pln_flutter/utils/helper/bottom_navbar_helper.dart';
-import 'package:pln_flutter/view/base_view.dart';
-import 'package:pln_flutter/view/main/main_controller.dart';
+import 'package:skor_id_flutter/utils/helper/bottom_navbar_helper.dart';
+import 'package:skor_id_flutter/view/base_view.dart';
+import 'package:skor_id_flutter/view/main/main_controller.dart';
 
 class MainView extends StatefulWidget {
   final int? initPage;

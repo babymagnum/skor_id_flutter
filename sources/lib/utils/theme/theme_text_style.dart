@@ -1,5 +1,5 @@
-import 'package:pln_flutter/utils/theme/fonts.dart';
-import 'package:pln_flutter/utils/theme/theme_color.dart';
+import 'package:skor_id_flutter/utils/theme/fonts.dart';
+import 'package:skor_id_flutter/utils/theme/theme_color.dart';
 import 'package:flutter/material.dart';
 
 class ThemeTextStyle {

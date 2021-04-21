@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:intl/intl.dart';
-import 'package:pln_flutter/main.dart';
+import 'package:skor_id_flutter/main.dart';
 
 class TextUtil {
   static bool validateName(String text) {

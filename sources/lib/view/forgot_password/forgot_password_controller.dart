@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pln_flutter/utils/helper/text_util.dart';
+import 'package:skor_id_flutter/utils/helper/text_util.dart';
 
 import '../../main.dart';
 

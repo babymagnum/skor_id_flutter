@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:pln_flutter/utils/helper/constant.dart';
-import 'package:pln_flutter/model/standart.dart';
+import 'package:skor_id_flutter/utils/helper/constant.dart';
+import 'package:skor_id_flutter/model/standart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 

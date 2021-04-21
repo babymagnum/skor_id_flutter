@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:pln_flutter/utils/helper/constant.dart';
-import 'package:pln_flutter/view/base_view.dart';
-import 'package:pln_flutter/view/login/login_view.dart';
-import 'package:pln_flutter/view/main/main_view.dart';
+import 'package:skor_id_flutter/view/base_view.dart';
 import '../../main.dart';
+import '../../utils/helper/constant.dart';
+import '../login/login_view.dart';
+import '../main/main_view.dart';
 
 class SplashView extends StatefulWidget {
   @override
@@ -17,9 +17,8 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
-
     Future.delayed(Duration(milliseconds: 1500), () {
-      Get.to((commonController?.preferences?.getBool(Constant.IS_LOGIN) ?? false) ? MainView() : LoginView());
+      Get.to((commonController.preferences?.getBool(Constant.IS_LOGIN) ?? false) ? MainView() : LoginView());
     });
   }
 

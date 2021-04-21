@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pln_flutter/view/account/account_view.dart';
-import 'package:pln_flutter/view/home/home_view.dart';
-import 'package:pln_flutter/view/notifikasi/notification_view.dart';
+import 'package:skor_id_flutter/view/account/account_view.dart';
+import 'package:skor_id_flutter/view/home/home_view.dart';
+import 'package:skor_id_flutter/view/notifikasi/notification_view.dart';
 
 class BottomNavBarHelper{
   static List<BottomNavBar> bottomNavBar() {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pln_flutter/view/base_view.dart';
+import 'package:skor_id_flutter/view/base_view.dart';
 
 class HomeView extends StatelessWidget {
   @override
