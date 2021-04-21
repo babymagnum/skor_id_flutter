@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/arief/Documents/Flutter Project/skor_id_flutter/sources/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-as/values-as.xml",
+            "outputFile": "/Users/arief/Documents/Flutter Project/skor_id_flutter/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-as/values-as.xml",
             "map": [
                 {
                     "source": "/Users/arief/.gradle/caches/transforms-2/files-2.1/c36c7f26e821d00a2f1e37db5d0431a4/jetified-play-services-basement-17.1.0/res/values-as/values.xml",

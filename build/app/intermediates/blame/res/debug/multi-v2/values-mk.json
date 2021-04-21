@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/arief/Documents/Flutter Project/skor_id_flutter/sources/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-mk/values-mk.xml",
+            "outputFile": "/Users/arief/Documents/Flutter Project/skor_id_flutter/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values-mk/values-mk.xml",
             "map": [
                 {
                     "source": "/Users/arief/.gradle/caches/transforms-2/files-2.1/600586170946e69bbfdbb8edb0d3d534/play-services-base-17.1.0/res/values-mk/values.xml",

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/arief/Documents/Flutter Project/skor_id_flutter/sources/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
+            "outputFile": "/Users/arief/Documents/Flutter Project/skor_id_flutter/build/app/intermediates/incremental/mergeDebugResources/merged.dir/values/values.xml",
             "map": [
                 {
                     "source": "/Users/arief/.gradle/caches/transforms-2/files-2.1/600586170946e69bbfdbb8edb0d3d534/play-services-base-17.1.0/res/values/values.xml",
@@ -20,23 +20,6 @@
                         "endLines": "4,5,6,7,8,9,10,11,100,101,102,103,104,105,106,107,109,110,111,112,113,114,115,116,117,288,307",
                         "endColumns": "89,79,89,89,79,80,79,79,104,180,124,106,179,122,115,102,187,104,180,124,174,147,62,61,78,20,20",
                         "endOffsets": "350,430,520,610,690,771,851,931,6405,6586,6711,6818,6998,7121,7237,7340,7695,7800,7981,8106,8281,8429,8492,8554,8633,18829,19246"
-                    }
-                },
-                {
-                    "source": "/Users/arief/Documents/Flutter Project/skor_id_flutter/sources/build/app/generated/res/google-services/debug/values/values.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "55,199,281,385,494,614,719",
-                        "endColumns": "143,81,103,108,119,104,81",
-                        "endOffsets": "194,276,380,489,609,714,796"
-                    },
-                    "to": {
-                        "startLines": "118,120,121,122,123,124,125",
-                        "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "8638,8864,8946,9050,9159,9279,9384",
-                        "endColumns": "143,81,103,108,119,104,81",
-                        "endOffsets": "8777,8941,9045,9154,9274,9379,9461"
                     }
                 },
                 {
@@ -76,6 +59,42 @@
                     }
                 },
                 {
+                    "source": "/Users/arief/Documents/Flutter Project/skor_id_flutter/android/app/src/main/res/values/styles.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "347"
+                    },
+                    "to": {
+                        "startLines": "127",
+                        "startColumns": "4",
+                        "startOffsets": "9537",
+                        "endLines": "131",
+                        "endColumns": "12",
+                        "endOffsets": "9829"
+                    }
+                },
+                {
+                    "source": "/Users/arief/Documents/Flutter Project/skor_id_flutter/build/app/generated/res/resValues/debug/values/gradleResValues.xml",
+                    "from": {
+                        "startLines": "6",
+                        "startColumns": "4",
+                        "startOffsets": "157",
+                        "endColumns": "75",
+                        "endOffsets": "228"
+                    },
+                    "to": {
+                        "startLines": "99",
+                        "startColumns": "4",
+                        "startOffsets": "6229",
+                        "endColumns": "75",
+                        "endOffsets": "6300"
+                    }
+                },
+                {
                     "source": "/Users/arief/.gradle/caches/transforms-2/files-2.1/2fea6eec99d7746a0cb79ab4c250219e/media-1.1.0/res/values/values.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14",
@@ -93,6 +112,23 @@
                     }
                 },
                 {
+                    "source": "/Users/arief/Documents/Flutter Project/skor_id_flutter/build/app/generated/res/google-services/debug/values/values.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "55,199,281,385,494,614,719",
+                        "endColumns": "143,81,103,108,119,104,81",
+                        "endOffsets": "194,276,380,489,609,714,796"
+                    },
+                    "to": {
+                        "startLines": "118,120,121,122,123,124,125",
+                        "startColumns": "4,4,4,4,4,4,4",
+                        "startOffsets": "8638,8864,8946,9050,9159,9279,9384",
+                        "endColumns": "143,81,103,108,119,104,81",
+                        "endOffsets": "8777,8941,9045,9154,9274,9379,9461"
+                    }
+                },
+                {
                     "source": "/Users/arief/.gradle/caches/transforms-2/files-2.1/3734018f3be5f3ef6180c1eed4ecc896/jetified-firebase-messaging-21.0.1/res/values/values.xml",
                     "from": {
                         "startLines": "4",
@@ -107,42 +143,6 @@
                         "startOffsets": "8782",
                         "endColumns": "81",
                         "endOffsets": "8859"
-                    }
-                },
-                {
-                    "source": "/Users/arief/Documents/Flutter Project/skor_id_flutter/sources/build/app/generated/res/resValues/debug/values/gradleResValues.xml",
-                    "from": {
-                        "startLines": "6",
-                        "startColumns": "4",
-                        "startOffsets": "157",
-                        "endColumns": "75",
-                        "endOffsets": "228"
-                    },
-                    "to": {
-                        "startLines": "99",
-                        "startColumns": "4",
-                        "startOffsets": "6229",
-                        "endColumns": "75",
-                        "endOffsets": "6300"
-                    }
-                },
-                {
-                    "source": "/Users/arief/Documents/Flutter Project/skor_id_flutter/sources/android/app/src/main/res/values/styles.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endLines": "6",
-                        "endColumns": "12",
-                        "endOffsets": "347"
-                    },
-                    "to": {
-                        "startLines": "127",
-                        "startColumns": "4",
-                        "startOffsets": "9537",
-                        "endLines": "131",
-                        "endColumns": "12",
-                        "endOffsets": "9829"
                     }
                 }
             ]
