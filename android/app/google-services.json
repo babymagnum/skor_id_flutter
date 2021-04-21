@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "232900768378",
+    "project_id": "balelabs-flutter-core",
+    "storage_bucket": "balelabs-flutter-core.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:232900768378:android:664c3eca3e95db1a88c1c3",
+        "android_client_info": {
+          "package_name": "balelabs.flutter.core"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "232900768378-tbjvp56holjmb5mk865ocema8up38u6i.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpxx6Gql1-Utmc53QEFZ68nwUimbz2YTk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "232900768378-tbjvp56holjmb5mk865ocema8up38u6i.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
