@@ -18,7 +18,7 @@ class _SplashViewState extends State<SplashView> {
   void initState() {
     super.initState();
     Future.delayed(Duration(milliseconds: 1500), () {
-      Get.to((commonController.preferences?.getBool(Constant.IS_LOGIN) ?? false) ? MainView() : LoginView());
+      Get.offAndToNamed((commonController.preferences?.getBool(Constant.IS_LOGIN) ?? false) ? Routes.MAIN : Routes.LOGIN);
     });
   }
 

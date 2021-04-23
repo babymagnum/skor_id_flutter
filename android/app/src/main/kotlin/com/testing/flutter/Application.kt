@@ -1,4 +1,4 @@
-package balelabs.flutter.core
+package com.testing.flutter
 
 import io.flutter.app.FlutterApplication
 import io.flutter.plugin.common.PluginRegistry

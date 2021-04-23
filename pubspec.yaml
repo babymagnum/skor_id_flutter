@@ -41,6 +41,8 @@ dependencies:
   #load svg image
   flutter_svg: ^0.21.0+1
   flutter_keyboard_visibility: ^5.0.0
+  firebase_dynamic_links: ^2.0.1
+  url_launcher: ^6.0.3
   flutter:
     sdk: flutter
 

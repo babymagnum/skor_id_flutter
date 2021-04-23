@@ -14,3 +14,10 @@ class Constant {
   static const ENGLISH = 'en';
 
 }
+
+class Routes {
+  static const FORGOT_PASSWORD = '/forgot_password';
+  static const LOGIN = '/login';
+  static const MAIN = '/main';
+  static const SPLASH = '/';
+}

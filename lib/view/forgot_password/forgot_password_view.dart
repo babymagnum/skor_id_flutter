@@ -31,6 +31,7 @@ class ForgotPasswordView extends StatelessWidget {
                   onChanged: _forgotPassCt.emailOnChange,
                   validator: _forgotPassCt.emailValidate,
                   keyboardType: TextInputType.emailAddress,
+                  controller: TextEditingController()..text = Get.parameters['email'].toString(),
                   textInputAction: TextInputAction.next,
                   decoration: InputDecoration(
                     contentPadding: EdgeInsets.fromLTRB(12, 18, 12, 18),

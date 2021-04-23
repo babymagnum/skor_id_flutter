@@ -36,7 +36,7 @@ class _MainViewState extends State<MainView> {
         type: BottomNavigationBarType.fixed,
         onTap: (index) => _mainCt.currentPageOnChange(index),
         items: BottomNavBarHelper.bottomNavBar().map((BottomNavBar item) {
-          return new BottomNavigationBarItem(
+          return BottomNavigationBarItem(
             icon: item.iconInActive,
             activeIcon: item.iconActive,
             label: item.title

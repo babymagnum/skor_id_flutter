@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -109,7 +110,10 @@ class LoginController extends GetxController {
     await Future.delayed(Duration(seconds: 3), () {});
     loading.value = false;
 
-    commonController.preferences!.setBool(Constant.IS_LOGIN, true);
-    Get.off(() => MainView());
+    // commonController.preferences!.setBool(Constant.IS_LOGIN, true);
+    // Get.off(() => MainView());
+
+    final String _url = 'https://bottomnavbartemplate.page.link/test';
+    await canLaunch(_url) ? await launch(_url) : throw 'Could not launch $_url';
   }
 }

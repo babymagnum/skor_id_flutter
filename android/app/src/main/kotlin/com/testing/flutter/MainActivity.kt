@@ -1,4 +1,4 @@
-package balelabs.flutter.core
+package com.testing.flutter
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

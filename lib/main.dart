@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:connectivity/connectivity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -14,6 +15,9 @@ import 'package:skor_id_flutter/utils/controller/common_controller.dart';
 import 'package:skor_id_flutter/utils/helper/constant.dart';
 import 'package:skor_id_flutter/utils/helper/locales_string.dart';
 import 'package:skor_id_flutter/utils/helper/text_util.dart';
+import 'package:skor_id_flutter/view/forgot_password/forgot_password_view.dart';
+import 'package:skor_id_flutter/view/home/home_view.dart';
+import 'package:skor_id_flutter/view/login/login_view.dart';
 import 'package:skor_id_flutter/view/main/main_view.dart';
 import 'package:skor_id_flutter/view/splash/splash_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -78,9 +82,7 @@ _onSelectNotification(Map<String, dynamic> message) async {
 }
 
 _navigateTo(String redirect) {
-  if (redirect == 'main') {
-    Get.to(MainView());
-  }
+  Get.toNamed('/$redirect');
 }
 
 class MyApp extends StatefulWidget {
@@ -164,10 +166,21 @@ class _MyAppState extends State<MyApp> {
 
     Connectivity().checkConnectivity().then((result) => _connectivityResult());
 
+    initDynamicLinks();
+
     _connection = Connectivity().onConnectivityChanged
         .listen((ConnectivityResult result) => _connectivityResult());
 
     _initFCM();
+  }
+
+  void initDynamicLinks() async {
+    final PendingDynamicLinkData? data = await FirebaseDynamicLinks.instance.getInitialLink();
+    final Uri? deepLink = data?.link;
+
+    if (deepLink != null) {
+      Get.toNamed(deepLink.path);
+    }
   }
 
   @override
@@ -179,7 +192,14 @@ class _MyAppState extends State<MyApp> {
       builder: () => GetMaterialApp(
         title: 'Balelabs Flutter',
         navigatorKey: globalNavigatorKey as GlobalKey<NavigatorState>?,
-        home: SplashView(),
+        // home: SplashView(),
+        initialRoute: Routes.SPLASH,
+        getPages: [
+          GetPage(name: Routes.SPLASH, page: () => SplashView()),
+          GetPage(name: Routes.MAIN, page: () => MainView()),
+          GetPage(name: Routes.LOGIN, page: () => LoginView()),
+          GetPage(name: Routes.FORGOT_PASSWORD, page: () => ForgotPasswordView()),
+        ],
         translations: LocalesString(),
         locale: Locale(commonController.language.value),
         fallbackLocale: Locale(Constant.INDONESIAN),
