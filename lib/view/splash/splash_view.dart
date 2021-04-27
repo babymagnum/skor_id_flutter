@@ -4,8 +4,6 @@ import 'package:get/get.dart';
 import 'package:skor_id_flutter/view/base_view.dart';
 import '../../main.dart';
 import '../../utils/helper/constant.dart';
-import '../login/login_view.dart';
-import '../main/main_view.dart';
 
 class SplashView extends StatefulWidget {
   @override
@@ -17,8 +15,9 @@ class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
     super.initState();
+
     Future.delayed(Duration(milliseconds: 1500), () {
-      Get.offAndToNamed((commonController.preferences?.getBool(Constant.IS_LOGIN) ?? false) ? Routes.MAIN : Routes.LOGIN);
+      Get.offAndToNamed((commonController.preferences?.getBool(Constant.IS_LOGIN) ?? false) ? Routes.HOME : Routes.LOGIN);
     });
   }
 

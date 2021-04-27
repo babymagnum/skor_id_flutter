@@ -93,4 +93,94 @@ class ThemeTextStyle {
     color: ThemeColor.black,
     decoration: TextDecoration.none,
   );
+
+  /// NunitoSans
+  static const TextStyle nunitoSansBlack = TextStyle(
+    fontFamily: Fonts.nunitoSans,
+    fontWeight: Fonts.nunitoSansBlack,
+    fontSize: 0,
+    color: ThemeColor.black,
+    decoration: TextDecoration.none,
+  );
+
+  static const TextStyle nunitoSansExtraBold = TextStyle(
+    fontFamily: Fonts.nunitoSans,
+    fontWeight: Fonts.nunitoSansExtraBold,
+    fontSize: 0,
+    color: ThemeColor.black,
+    decoration: TextDecoration.none,
+  );
+
+  static const TextStyle nunitoSansBold = TextStyle(
+    fontFamily: Fonts.nunitoSans,
+    fontWeight: Fonts.nunitoSansBold,
+    fontSize: 0,
+    color: ThemeColor.black,
+    decoration: TextDecoration.none,
+  );
+
+  static const TextStyle nunitoSansSemiBold = TextStyle(
+    fontFamily: Fonts.nunitoSans,
+    fontWeight: Fonts.nunitoSansSemiBold,
+    fontSize: 0,
+    color: ThemeColor.black,
+    decoration: TextDecoration.none,
+  );
+
+  static const TextStyle nunitoSansRegular = TextStyle(
+    fontFamily: Fonts.nunitoSans,
+    fontWeight: Fonts.nunitoSansRegular,
+    fontSize: 0,
+    color: ThemeColor.black,
+    decoration: TextDecoration.none,
+  );
+
+  static const TextStyle nunitoSansLight = TextStyle(
+    fontFamily: Fonts.nunitoSans,
+    fontWeight: Fonts.nunitoSansLight,
+    fontSize: 0,
+    color: ThemeColor.black,
+    decoration: TextDecoration.none,
+  );
+
+  static const TextStyle nunitoSansExtraLight = TextStyle(
+    fontFamily: Fonts.nunitoSans,
+    fontWeight: Fonts.nunitoSansExtraLight,
+    fontSize: 0,
+    color: ThemeColor.black,
+    decoration: TextDecoration.none,
+  );
+
+  /// GothamRounded
+  static const TextStyle gothamRoundedBold = TextStyle(
+    fontFamily: Fonts.gothamRounded,
+    fontWeight: Fonts.gothamRoundedBold,
+    fontSize: 0,
+    color: ThemeColor.black,
+    decoration: TextDecoration.none,
+  );
+
+  static const TextStyle gothamRoundedMedium = TextStyle(
+    fontFamily: Fonts.gothamRounded,
+    fontWeight: Fonts.gothamRoundedMedium,
+    fontSize: 0,
+    color: ThemeColor.black,
+    decoration: TextDecoration.none,
+  );
+
+  static const TextStyle gothamRoundedRegular = TextStyle(
+    fontFamily: Fonts.gothamRounded,
+    fontWeight: Fonts.gothamRoundedRegular,
+    fontSize: 0,
+    color: ThemeColor.black,
+    decoration: TextDecoration.none,
+  );
+
+  static const TextStyle gothamRoundedLight = TextStyle(
+    fontFamily: Fonts.gothamRounded,
+    fontWeight: Fonts.gothamRoundedLight,
+    fontSize: 0,
+    color: ThemeColor.black,
+    decoration: TextDecoration.none,
+  );
 }

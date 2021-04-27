@@ -18,6 +18,6 @@ class Constant {
 class Routes {
   static const FORGOT_PASSWORD = '/forgot_password';
   static const LOGIN = '/login';
-  static const MAIN = '/main';
+  static const HOME = '/home';
   static const SPLASH = '/';
 }

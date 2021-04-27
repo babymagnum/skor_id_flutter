@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:connectivity/connectivity.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -18,14 +17,11 @@ import 'package:skor_id_flutter/utils/helper/text_util.dart';
 import 'package:skor_id_flutter/view/forgot_password/forgot_password_view.dart';
 import 'package:skor_id_flutter/view/home/home_view.dart';
 import 'package:skor_id_flutter/view/login/login_view.dart';
-import 'package:skor_id_flutter/view/main/main_view.dart';
-import 'package:skor_id_flutter/view/splash/splash_view.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final GlobalKey globalNavigatorKey = GlobalKey<NavigatorState>();
 final FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
 final CommonController commonController = Get.put(CommonController(), permanent: true);
-final FirebaseAuth auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();
 
 void main() async {
@@ -122,7 +118,7 @@ class _MyAppState extends State<MyApp> {
   }
 
   _initFCM() async {
-    NotificationSettings settings = await firebaseMessaging.requestPermission(
+    await firebaseMessaging.requestPermission(
       alert: true,
       announcement: true,
       badge: true,
@@ -132,9 +128,8 @@ class _MyAppState extends State<MyApp> {
       sound: true,
     );
 
-    print('User granted permission: ${settings.authorizationStatus}');
-
     await _getFcmToken();
+
     _fcmListener();
   }
 
@@ -190,13 +185,11 @@ class _MyAppState extends State<MyApp> {
     return ScreenUtilInit(
       designSize: Size(360, 640),
       builder: () => GetMaterialApp(
-        title: 'Balelabs Flutter',
+        title: 'SkorId',
         navigatorKey: globalNavigatorKey as GlobalKey<NavigatorState>?,
-        // home: SplashView(),
-        initialRoute: Routes.SPLASH,
+        initialRoute: (commonController.preferences?.getBool(Constant.IS_LOGIN) ?? false) ? Routes.HOME : Routes.LOGIN,
         getPages: [
-          GetPage(name: Routes.SPLASH, page: () => SplashView()),
-          GetPage(name: Routes.MAIN, page: () => MainView()),
+          GetPage(name: Routes.HOME, page: () => HomeView()),
           GetPage(name: Routes.LOGIN, page: () => LoginView()),
           GetPage(name: Routes.FORGOT_PASSWORD, page: () => ForgotPasswordView()),
         ],

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:skor_id_flutter/utils/helper/constant.dart';
-import 'package:intl/date_symbol_data_local.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 class CommonController extends GetxController {
 
@@ -12,7 +12,7 @@ class CommonController extends GetxController {
 
   checkConnection() async{
     var _check = await GetConnect().get('https://google.com');
-    print('Check Connection, status code = ${_check.statusCode}');
+
     if(_check.statusCode == 200) {
       notConnected.value = false;
     }else{

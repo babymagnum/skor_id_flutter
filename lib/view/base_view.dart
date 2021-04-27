@@ -8,16 +8,17 @@ import 'package:skor_id_flutter/main.dart';
 class BaseView extends StatelessWidget {
   final bool isUseAppbar;
   final String? appbarTitle;
-  final IconButton? appbarLeading;
+  final Widget? appbarLeading;
   final Widget child;
   final BottomNavigationBar? bottomNavigationBar;
+
   BaseView({this.isUseAppbar:false, this.appbarTitle, this.appbarLeading, required this.child, this.bottomNavigationBar});
 
   @override
   Widget build(BuildContext context) {
     Widget _appBar = AppBar(
       centerTitle: true,
-      title: Text(appbarTitle??'Page Title', style: ThemeTextStyle.biryaniBold.apply(fontSizeDelta: 20)),
+      title: Text(appbarTitle ?? 'Page Title', style: ThemeTextStyle.biryaniBold.apply(fontSizeDelta: 20)),
       leading: appbarLeading ?? IconButton(
         icon: Icon(Icons.arrow_back_rounded, color: Colors.black), 
         onPressed: () => Get.back()
@@ -25,6 +26,7 @@ class BaseView extends StatelessWidget {
     );
 
     return Scaffold(
+      backgroundColor: Color(0xFF292D35),
       appBar: isUseAppbar ? _appBar as PreferredSizeWidget? : null,
       resizeToAvoidBottomInset: true,
       bottomNavigationBar: bottomNavigationBar,
